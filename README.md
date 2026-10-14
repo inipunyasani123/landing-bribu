@@ -2,7 +2,7 @@
 
 Bribu: pasang brief desain, kurator memilih tiga desainer, dan ketiganya dibayar untuk satu sketsa. Anda memilih satu arah untuk diselesaikan — logo, kemasan, media sosial, ilustrasi.
 
-**Demo live:** https://landing-bribu.vercel.app
+**Demo live:** https://landing-bribu.pintuweb.id
 
 ![Tangkapan layar Bribu](public/og.jpg)
 

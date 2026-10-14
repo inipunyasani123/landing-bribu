@@ -5,10 +5,10 @@ import "./globals.css";
 const interTight = Inter_Tight({ variable: "--font-intertight", subsets: ["latin"], weight: ["600", "700", "800"] });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"Organization","name":"Bribu","description":"Papan brief desain dengan tiga sketsa yang dibayar","url":"https://landing-bribu.vercel.app","inLanguage":"id"};
+const __jsonld = {"@context":"https://schema.org","@type":"Organization","name":"Bribu","description":"Papan brief desain dengan tiga sketsa yang dibayar","url":"https://landing-bribu.pintuweb.id","inLanguage":"id"};
 
 export const metadata = {
-  metadataBase: new URL("https://landing-bribu.vercel.app"),
+  metadataBase: new URL("https://landing-bribu.pintuweb.id"),
   title: { default: "Bribu — Papan Brief Desain, Tiga Sketsa yang Dibayar", template: "%s — Bribu" },
   description: "Bribu: pasang brief desain, kurator memilih tiga desainer, dan ketiganya dibayar untuk satu sketsa. Anda memilih satu arah untuk diselesaikan — logo, kemasan, media sosial, ilustrasi.",
   applicationName: "Bribu",
@@ -16,11 +16,11 @@ export const metadata = {
   authors: [{ name: "Bribu" }],
   creator: "Bribu",
   publisher: "Bribu",
-  alternates: { canonical: "https://landing-bribu.vercel.app" },
+  alternates: { canonical: "https://landing-bribu.pintuweb.id" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://landing-bribu.vercel.app",
+    url: "https://landing-bribu.pintuweb.id",
     siteName: "Bribu",
     title: { default: "Bribu — Papan Brief Desain, Tiga Sketsa yang Dibayar", template: "%s — Bribu" },
     description: "Bribu: pasang brief desain, kurator memilih tiga desainer, dan ketiganya dibayar untuk satu sketsa. Anda memilih satu arah untuk diselesaikan — logo, kemasan, media sosial, ilustrasi.",
