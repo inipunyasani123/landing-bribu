@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BRIEF, DESAINER, KATEGORI, LANGKAH, SITE, STATUS, briefByKode, rp, tanggal } from '@/lib/papan';
+import { BRIEF, DESAINER, KATEGORI, LANGKAH, SITE, STATUS, briefBertanggal, briefByKode, rp, tanggal } from '@/lib/papan';
 import { KartuBrief, Sketsa } from '../../components/Papan';
+
+/* Deskripsi meta maksimal 155 karakter, dipotong di batas kata. */
+const ringkas = (t, n = 155) => (t.length <= n ? t : `${t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '')}…`);
 
 export function generateStaticParams() {
   return BRIEF.map((b) => ({ kode: b.kode.toLowerCase() }));
@@ -13,7 +16,7 @@ export async function generateMetadata({ params }) {
   if (!b) return {};
   return {
     title: `${b.kode} · ${b.usaha}`,
-    description: `Brief ${KATEGORI[b.kategori].nama.toLowerCase()} untuk ${b.usaha}, ${b.kota}: ${b.ringkas}`,
+    description: ringkas(`Brief ${KATEGORI[b.kategori].nama.toLowerCase()} untuk ${b.usaha}, ${b.kota}: ${b.ringkas}`),
     alternates: { canonical: `${SITE}/papan/${b.kode.toLowerCase()}` },
   };
 }
@@ -22,15 +25,16 @@ const TAHAP = ['kurasi', 'sketsa', 'pilih', 'selesai'];
 
 export default async function DetailBrief({ params }) {
   const { kode } = await params;
-  const b = briefByKode(kode);
+  const papan = briefBertanggal();
+  const b = papan.find((x) => x.kode.toLowerCase() === String(kode).toLowerCase());
   if (!b) notFound();
   const k = KATEGORI[b.kategori];
   const tahap = TAHAP.indexOf(b.status);
   const lihat = b.status === 'pilih' || b.status === 'selesai';
-  const lain = BRIEF.filter((x) => x.kode !== b.kode && x.kategori === b.kategori).slice(0, 2);
+  const lain = papan.filter((x) => x.kode !== b.kode && x.kategori === b.kategori).slice(0, 2);
 
   return (
-    <main className="bg-paper px-6 pt-28 pb-24">
+    <main className="bg-paper px-6 pt-24 pb-20 md:pt-28 md:pb-24">
       <div className="mx-auto max-w-6xl">
         <nav aria-label="Remah roti" className="slug flex flex-wrap gap-2 text-muted">
           <Link href="/papan" className="text-pin hover:text-board">Papan brief</Link>
@@ -70,7 +74,7 @@ export default async function DetailBrief({ params }) {
           </aside>
         </div>
 
-        <section aria-labelledby="isi" className="mt-16 grid gap-8 border-t-2 border-board pt-10 md:grid-cols-3">
+        <section aria-labelledby="isi" className="mt-12 grid gap-8 border-t-2 border-board pt-8 md:mt-16 md:grid-cols-3 md:pt-10">
           <h2 id="isi" className="sr-only">Isi brief</h2>
           <div>
             <h3 className="slug text-board">Yang dibutuhkan</h3>
@@ -92,7 +96,7 @@ export default async function DetailBrief({ params }) {
           </div>
         </section>
 
-        <section aria-labelledby="arah" className="mt-16">
+        <section aria-labelledby="arah" className="mt-12 md:mt-16">
           <h2 id="arah" className="text-3xl text-board">Tiga slot desainer</h2>
           <ul className="mt-8 grid gap-6 md:grid-cols-3">
             {[0, 1, 2].map((i) => {
@@ -104,7 +108,7 @@ export default async function DetailBrief({ params }) {
                   {a && lihat ? (
                     <Sketsa b={b} gaya={a[1]} label={`Sketsa arah ${'ABC'[i]} untuk ${b.usaha} oleh ${d.nama}`} />
                   ) : (
-                    <div className="flex aspect-[4/3] items-center justify-center border-b border-dashed border-board/20 bg-paper-2 p-6 text-center text-sm">
+                    <div className="flex aspect-[16/7] items-center justify-center border-b border-dashed border-board/20 bg-paper-2 p-6 text-center text-sm sm:aspect-[4/3]">
                       {a ? (a[2] === 'Sketsa masuk' ? 'Sketsa masuk — hanya terlihat oleh klien sampai tiga sketsa lengkap' : 'Sedang menggambar') : 'Menunggu kurasi'}
                     </div>
                   )}

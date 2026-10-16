@@ -7,10 +7,15 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 const __jsonld = {"@context":"https://schema.org","@type":"Organization","name":"Bribu","description":"Papan brief desain dengan tiga sketsa yang dibayar","url":"https://landing-bribu.pintuweb.id","inLanguage":"id"};
 
+const DESKRIPSI = "Bribu: pasang brief desain, kurator memilih tiga desainer, ketiganya dibayar untuk sketsa, lalu Anda memilih satu arah — logo, kemasan, atau media sosial.";
+
+// Tanggal pasang di papan dihitung dari hari ini (lib/papan.js), jadi halaman dibangun ulang tiap jam.
+export const revalidate = 3600;
+
 export const metadata = {
   metadataBase: new URL("https://landing-bribu.pintuweb.id"),
   title: { default: "Bribu — Papan Brief Desain, Tiga Sketsa yang Dibayar", template: "%s — Bribu" },
-  description: "Bribu: pasang brief desain, kurator memilih tiga desainer, dan ketiganya dibayar untuk satu sketsa. Anda memilih satu arah untuk diselesaikan — logo, kemasan, media sosial, ilustrasi.",
+  description: DESKRIPSI,
   applicationName: "Bribu",
   keywords: ["jasa desain logo", "brief desain", "desain kemasan", "templat media sosial", "desainer grafis indonesia"],
   authors: [{ name: "Bribu" }],
@@ -23,13 +28,13 @@ export const metadata = {
     url: "https://landing-bribu.pintuweb.id",
     siteName: "Bribu",
     title: { default: "Bribu — Papan Brief Desain, Tiga Sketsa yang Dibayar", template: "%s — Bribu" },
-    description: "Bribu: pasang brief desain, kurator memilih tiga desainer, dan ketiganya dibayar untuk satu sketsa. Anda memilih satu arah untuk diselesaikan — logo, kemasan, media sosial, ilustrasi.",
+    description: DESKRIPSI,
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Bribu — Papan Brief Desain, Tiga Sketsa yang Dibayar" }],
   },
   twitter: {
     card: "summary_large_image",
     title: { default: "Bribu — Papan Brief Desain, Tiga Sketsa yang Dibayar", template: "%s — Bribu" },
-    description: "Bribu: pasang brief desain, kurator memilih tiga desainer, dan ketiganya dibayar untuk satu sketsa. Anda memilih satu arah untuk diselesaikan — logo, kemasan, media sosial, ilustrasi.",
+    description: DESKRIPSI,
     images: ["/og.jpg"],
   },
   robots: {
