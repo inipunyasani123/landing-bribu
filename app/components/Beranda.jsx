@@ -55,7 +55,7 @@ export function Cara() {
             <p className="slug text-chalk/80">Contoh dari papan · {contoh.kode}</p>
             <p className="mt-3 text-2xl font-semibold text-chalk">{contoh.usaha}, {contoh.kota}</p>
             <p className="mt-3 leading-relaxed text-chalk/80">Tiga desainer, tiga arah. Klien memilih arah B; dua sketsa lainnya tetap milik desainernya — dan tetap dibayar.</p>
-            <Link href={`/papan/${contoh.kode.toLowerCase()}`} className="slug mt-5 inline-block border-b-2 border-tack pb-1 text-chalk">Buka brief lengkap</Link>
+            <Link href={`/papan/${contoh.kode.toLowerCase()}`} className="slug mt-3 inline-flex min-h-11 items-center border-b-2 border-tack text-chalk">Buka brief lengkap</Link>
           </div>
           <ul className="grid grid-cols-3 gap-3">
             {contoh.arah.map(([d, gaya], i) => (
@@ -139,7 +139,7 @@ export function Paket() {
                 {c.isi.map((i) => <li key={i} className="flex gap-2"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-pin" />{i}</li>)}
               </ul>
               <p className="slug mt-5 text-muted">{c.hari} hari kerja · 2 putaran revisi</p>
-              <Link href={`/?kategori=${k}#pasang`} className="mt-auto pt-6 text-sm font-semibold text-pin hover:text-board">Pasang brief {c.nama.toLowerCase()} →</Link>
+              <Link href={`/?kategori=${k}#pasang`} className="mt-auto inline-block py-3 text-sm font-semibold text-pin hover:text-board">Pasang brief {c.nama.toLowerCase()} →</Link>
             </li>
           ))}
         </ul>

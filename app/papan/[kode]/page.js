@@ -37,7 +37,7 @@ export default async function DetailBrief({ params }) {
     <main className="bg-paper px-6 pt-24 pb-20 md:pt-28 md:pb-24">
       <div className="mx-auto max-w-6xl">
         <nav aria-label="Remah roti" className="slug flex flex-wrap gap-2 text-muted">
-          <Link href="/papan" className="text-pin hover:text-board">Papan brief</Link>
+          <Link href="/papan" className="inline-block py-3 text-pin hover:text-board">Papan brief</Link>
           <span aria-hidden="true">/</span>
           <span aria-current="page">{b.kode}</span>
         </nav>

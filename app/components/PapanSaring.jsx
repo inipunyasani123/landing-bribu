@@ -9,7 +9,7 @@ export default function PapanSaring({ brief }) {
   const [kat, setKat] = useState('semua');
   const [st, setSt] = useState('semua');
   const tampil = brief.filter((b) => (kat === 'semua' || b.kategori === kat) && (st === 'semua' || b.status === st));
-  const tombol = (aktif) => `slug shrink-0 border px-3 py-2.5 ${aktif ? 'border-board bg-board text-chalk' : 'border-board/20 bg-white text-board hover:border-board'}`;
+  const tombol = (aktif) => `slug shrink-0 border px-3 py-3.5 ${aktif ? 'border-board bg-board text-chalk' : 'border-board/20 bg-white text-board hover:border-board'}`;
 
   return (
     <>
